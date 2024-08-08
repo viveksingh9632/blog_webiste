@@ -1,0 +1,18 @@
+user:
+name,email,password,time,
+tag_id
+
+
+
+
+name="tag_id"
+ id="tag_id"
+ for="tag_id"
+
+
+
+
+ post
+ category_id,
+ user_id,
+ tag_id,

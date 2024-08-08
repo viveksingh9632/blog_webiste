@@ -1,0 +1,99 @@
+<%- include('./partials/head') %>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto mt-4">
+      <div class="card shadow">
+        <div class="card-header bg-success">
+          <h3 class="text-light">Edit post</h3>
+        </div>
+        <div class="card-body p-4">
+          <form action="/edit-post/<%= id %>" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="slug">Slug</label>
+              <input
+                type="text"
+                name="slug"
+
+                slug="slug"
+                class="form-control form-control-lg"
+                value="<%= post.slug %>"
+                placeholder="Enter slug"
+                required
+              />
+
+              <div class="mb-3">
+                <label for="user_id">User</label>
+                <select class="form-control form-control-lg" name="user_id" id="user_id" required>
+                    <% users.forEach(function(user) { %>
+                        <option value="<%= user._id %>" <%=user.user_id &&
+                            user._id.toString()===user.user_id.toString() ? 'selected' : '' %>>
+                            <%= user.name %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+              <div class="mb-3">
+                <label for="tag_id">Tag</label>
+                <select class="form-control form-control-lg" name="tag_id" id="tag_id" required>
+                    <% tags.forEach(function(tag) { %>
+                        <option value="<%= tag._id %>" <%=tag.tag_id &&
+                            tag._id.toString()===tag.tag_id.toString() ? 'selected' : '' %>>
+                            <%= tag.name %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+              <div class="mb-3">
+                <label for="category_id">Category</label>
+                <select class="form-control form-control-lg" name="category_id" id="category_id" required>
+                    <% categories.forEach(function(category) { %>
+                        <option value="<%= category._id %>" <%=category.category_id &&
+                            category._id.toString()===category.category_id.toString() ? 'selected' : '' %>>
+                            <%= category.category %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+
+
+<div class="mb-3">
+  <label for="new-image" class="form-label">Select New Image</label>
+  <input type="file" name="image" id="new-image" class="form-control form-control-lg">
+  <div class="mt-3">
+    <img src="/<%= post.image %>" alt="Current Image" width="100" class="img-thumbnail">
+  </div>
+  <input type="hidden" name="old_image" value="<%= post.image %>">
+</div>
+
+            <div class="mb-3">
+              <label for="content" class="form-label">Content</label>
+              <textarea
+                id="content"
+                name="content"
+                class="form-control"
+                rows="4"
+                placeholder="Enter content"
+                required
+              ><%= post.content %></textarea>
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="submit"
+                slug="submit"
+                value="Submit"
+                class="btn btn-success"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

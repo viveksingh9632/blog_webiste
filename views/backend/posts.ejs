@@ -1,0 +1,83 @@
+<%- include('./partials/head') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mx-auto mt-4">
+      <a href="/add-post" class="btn btn-primary mb-4">Add Post</a>
+
+      <% if (message) { %>
+      <div
+        class="alert alert-dismissible fade show alert-<%= message.type %>"
+        role="alert"
+      >
+        <%= message.text %>
+        <button
+          class="btn-close"
+          type="button"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+        <strong><%= message.message %> </strong>
+      </div>
+      <% } %>
+      <div class="table-responsive">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr class="table-dark">
+              <th>Slug</th>
+              <th>Content</th>
+              <th>Image</th>
+              <th>User_id</th>
+              <th>Tag_id</th>
+              <th>Category_id</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% posts.forEach((post) => { %>
+
+              <tr>
+                <td><%= post.slug %></td>
+                <td><%= post.content %></td>
+                <td><img src="/<%= post.image %>" alt="Image" width="50"></td>
+                <td>
+                  <% if (post.user_id) { %>
+                      <p>
+                          <%= post.user_id.name %>
+                      </p>
+                      <% } %>
+              </td>
+                <td>
+                  <% if (post.tag_id) { %>
+                      <p>
+                          <%= post.tag_id.name %>
+                      </p>
+                      <% } %>
+              </td>
+              <td>
+                <% if (post.category_id) { %>
+                    <p>
+                        <%= post.category_id.category %>
+                    </p>
+                    <% } %>
+            </td>
+
+                <td>
+                  <a href="/edit-post/<%= post._id %>" class="text-success"
+                    ><i class="fas fa-edit fa-lg mx-1"></i
+                  ></a>
+                  <a href="/delete-post/<%= post._id %>" class="text-danger"
+                    ><i class="fas fa-trash-alt fa-lg mx-1"></i
+                  ></a>
+                </td>
+              </tr>
+              <% }); %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

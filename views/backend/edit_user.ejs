@@ -1,0 +1,65 @@
+<%- include('./partials/head') %>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6  mx-auto mt-4">
+      <div class="card shadow">
+        <div class="card-header bg-success">
+          <h3 class="text-light">Edit User</h3>
+
+        </div>
+        <div class="card-body p-4">
+          <form action="/edit_user/<%= id %>" method="post">
+            <div class="mb-3">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control form-control-lg"
+                placeholder="Enter name"
+                value="<%= user.name %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control form-control-lg"
+                placeholder="Enter email"
+                value="<%= user.email %>"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="tag_id">Tag</label>
+              <select class="form-control form-control-lg" name="tag_id" id="tag_id" required>
+                  <% tags.forEach(function(tag) { %>
+                      <option value="<%= tag._id %>" <%=tag.tag_id &&
+                          tag._id.toString()===tag.tag_id.toString() ? 'selected' : '' %>>
+                          <%= tag.slug %>
+                      </option>
+                      <% }); %>
+              </select>
+          </div>
+
+            <div class="mb-3 ">
+              <input
+                type="submit"
+                name="submit"
+                value="Add User"
+                class="btn btn-success "
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

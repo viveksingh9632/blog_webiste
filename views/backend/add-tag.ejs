@@ -1,0 +1,65 @@
+<%- include('./partials/head') %>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6  mx-auto mt-4">
+      <div class="card shadow">
+        <div class="card-header bg-primary">
+          <h3 class="text-light">Add a tag</h3>
+
+        </div>
+        <div class="card-body p-4">
+          <form action="/add-tag" method="post"  >
+            <div class="mb-3">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control form-control-lg"
+                  placeholder="Enter name" required>
+          </div>
+
+            <div class="mb-3">
+              <label for="slug">Slug</label>
+              <input
+                type="text"
+                name="slug"                
+                class="form-control form-control-lg"
+                placeholder="Enter slug"
+                required
+              />
+            </div>
+                  <div class="mb-3">
+                    <label for="category">Category</label>
+                    <input
+                      type="text"
+                      name="category"                
+                      class="form-control form-control-lg"
+                      placeholder="Enter category"
+                      required
+                    />
+                  </div>
+      
+            <div class="mb-3">
+              <label for="content" class="form-label">Content</label>
+              <textarea id="content" name="content" class="form-control" rows="4" placeholder="Enter content" required></textarea>
+          </div>
+
+
+
+
+            <div class="mb-3 ">
+              <input
+                type="submit"
+                slug="submit"
+                value="Submit"
+                class="btn btn-primary "
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>
